@@ -1,6 +1,7 @@
 package com.corporation.appollo.reggaenight;
 
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,10 +14,13 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean reggaeIsOn = false;
 
+    MediaPlayer mPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         reggae_off = (ImageView) findViewById(R.id.reggae_off);
         reggae_on = (ImageView) findViewById(R.id.reggae_on);
 
@@ -31,6 +35,19 @@ public class MainActivity extends AppCompatActivity {
                 triggerReggae();
             }
         });
+
+        mPlayer = MediaPlayer.create(this, R.raw.reggae_night);
+    }
+    private void playReggae() {
+        mPlayer.start();
+    }
+
+    private void stopReggae(){
+        mPlayer.stop();
+    }
+    public void onDestroy() {
+        mPlayer.stop();
+        super.onDestroy();
     }
 
     /**
@@ -41,10 +58,12 @@ public class MainActivity extends AppCompatActivity {
             reggae_off.setVisibility(View.VISIBLE);
             reggae_on.setVisibility(View.GONE);
             reggaeIsOn = false;
+            playReggae();
         } else {
             reggae_off.setVisibility(View.GONE);
             reggae_on.setVisibility(View.VISIBLE);
             reggaeIsOn = true;
+            stopReggae();
         }
     }
 
