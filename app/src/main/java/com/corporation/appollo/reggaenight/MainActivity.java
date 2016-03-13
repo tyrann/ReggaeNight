@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 public class MainActivity extends AppCompatActivity {
     private ImageView reggae_off;
     private ImageView reggae_on;
@@ -38,12 +41,14 @@ public class MainActivity extends AppCompatActivity {
 
         mPlayer = MediaPlayer.create(this, R.raw.reggae_night);
     }
+
     private void playReggae() {
+        mPlayer.seekTo(0);
         mPlayer.start();
     }
 
     private void stopReggae(){
-        mPlayer.stop();
+        mPlayer.pause();
     }
     public void onDestroy() {
         mPlayer.stop();
@@ -58,12 +63,12 @@ public class MainActivity extends AppCompatActivity {
             reggae_off.setVisibility(View.VISIBLE);
             reggae_on.setVisibility(View.GONE);
             reggaeIsOn = false;
-            playReggae();
+            stopReggae();
         } else {
             reggae_off.setVisibility(View.GONE);
             reggae_on.setVisibility(View.VISIBLE);
             reggaeIsOn = true;
-            stopReggae();
+            playReggae();
         }
     }
 
