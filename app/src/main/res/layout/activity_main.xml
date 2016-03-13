@@ -9,8 +9,29 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.corporation.appollo.reggaenight.MainActivity">
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/reggae_off"
+        android:src="@drawable/reggae_off"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/reggae_on"
+        android:src="@drawable/reggae_on"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="150px"
+        android:layout_height="200px"
+        android:id="@+id/trigger_button"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
