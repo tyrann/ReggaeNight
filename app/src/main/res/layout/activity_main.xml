@@ -22,8 +22,8 @@
         android:scaleType="fitXY" />
 
     <Button
-        android:layout_width="150px"
-        android:layout_height="250px"
+        android:layout_width="100dp"
+        android:layout_height="130dp"
         android:id="@+id/trigger_button"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
